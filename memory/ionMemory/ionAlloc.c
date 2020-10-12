@@ -320,6 +320,7 @@ void* ion_alloc_palloc(int size, void *veOps, void *pVeopsSelf)
         alloc_data.aw_heap_id_mask = AW_ION_DMA_HEAP_MASK | AW_ION_CARVEOUT_HEAP_MASK;
     }
     alloc_data.flags = AW_ION_CACHED_FLAG | AW_ION_CACHED_NEEDS_SYNC_FLAG;
+    loge("alloc_data.flags = %d, aw_heap_id_mask = %d \n", alloc_data.flags, alloc_data.aw_heap_id_mask);
 
     #if 0
     #ifdef CONF_KERNEL_VERSION_4_9
@@ -332,7 +333,7 @@ void* ion_alloc_palloc(int size, void *veOps, void *pVeopsSelf)
     ret = ioctl(g_alloc_context->fd, AW_MEM_ION_IOC_ALLOC, &alloc_data);
     if (ret)
     {
-        loge("ION_IOC_ALLOC error \n");
+        loge("ION_IOC_ALLOC error, ret %d, size = %d\n", ret, size);
         goto ALLOC_OUT;
     }
 
@@ -754,7 +755,7 @@ void* ion_alloc_alloc_drm(int size, void*veOps, void* pVeopsSelf)
     ret = ioctl(g_alloc_context->fd, AW_MEM_ION_IOC_ALLOC, &alloc_data);
     if (ret)
     {
-        loge("ION_IOC_ALLOC error %s \n", strerror(errno));
+        loge("ION_IOC_ALLOC error, ret %d, size = %d\n", ret, size);
         goto ALLOC_OUT;
     }
 
