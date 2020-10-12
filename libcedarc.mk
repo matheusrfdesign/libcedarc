@@ -4,7 +4,7 @@
 #
 ################################################################################
 LIBCEDARC_VERSION = master
-LIBCEDARC_SITE = $(call github,aodzip,libcedarc,$(LIBCEDARC_VERSION))
+LIBCEDARC_SITE = $(call github,matheusrfdesign,libcedarc,$(LIBCEDARC_VERSION))
 LIBCEDARC_DEPENDENCIES = 
 LIBCEDARC_INSTALL_STAGING = YES
 LIBCEDARC_INSTALL_TARGET = YES
